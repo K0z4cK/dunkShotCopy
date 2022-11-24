@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Controllers
-{
     public class SingletonComponent<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
@@ -42,4 +40,3 @@ namespace Assets.Scripts.Controllers
         }
     }
 
-}

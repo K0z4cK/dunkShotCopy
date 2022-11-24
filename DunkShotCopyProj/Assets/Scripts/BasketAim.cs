@@ -8,9 +8,12 @@ public class BasketAim : MonoBehaviour
     public GameObject ball;
     
 
-    private Rigidbody2D ballRigidbody;
-    public float velocityMult = 8f;
+    private Rigidbody2D ballRigidbody;   
     private Collider2D bottomBound;
+    public float velocityMult = 8f;
+
+    [SerializeField]
+    private TrajectoryLine trajectory;
 
     //temp (replace with actions in future)
     public Collider2D catcher;
@@ -18,6 +21,7 @@ public class BasketAim : MonoBehaviour
     private bool _aimingMode;
     void Awake()
     {
+        trajectory = GetComponent<TrajectoryLine>();
         launchPosition = transform.position;
         bottomBound = transform.parent.GetComponent<Collider2D>();
         _aimingMode = false;
@@ -58,19 +62,19 @@ public class BasketAim : MonoBehaviour
             mouseDelta.Normalize();
             mouseDelta *= maxMagnitude;
         }
-        Vector2 ballPos = launchPosition + mouseDelta;
+        Vector2 ballPos = (launchPosition + mouseDelta);
         ball.transform.position = ballPos;
-
+        trajectory.ShowTrajectoryLine(launchPosition, -mouseDelta * velocityMult*2);
         if(Input.GetMouseButtonUp(0))
         {
             print("shot");
             _aimingMode = false;          
             ballRigidbody.isKinematic = false;
-            mouseDelta *= 1.5f;
-            ballRigidbody.velocity = -mouseDelta * velocityMult;
-            print("velocity: " + ballRigidbody.velocity);
-            
+            ballRigidbody.velocity = -mouseDelta * velocityMult*2;
+            //print("velocity: " + ballRigidbody.velocity);
+            trajectory.ClearTrajectory();
             ball = null;
+            EventManager.Instance.BallShoted();
         }
     }
 
@@ -78,6 +82,7 @@ public class BasketAim : MonoBehaviour
     {
         bottomBound.enabled = true;
         catcher.enabled = true;
+        transform.parent.transform.up = Vector3.up;
         //ball = null;
     }
 }
