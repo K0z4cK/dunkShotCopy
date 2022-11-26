@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BasketAim : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource audioSource;
+
     public Vector2 launchPosition;
     public GameObject ball;
     
@@ -15,12 +18,12 @@ public class BasketAim : MonoBehaviour
     [SerializeField]
     private TrajectoryLine trajectory;
 
-    //temp (replace with actions in future)
     public Collider2D catcher;
 
     private bool _aimingMode;
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         trajectory = GetComponent<TrajectoryLine>();
         launchPosition = transform.position;
         bottomBound = transform.parent.GetComponent<Collider2D>();
@@ -38,7 +41,8 @@ public class BasketAim : MonoBehaviour
         ballRigidbody = ball.GetComponent<Rigidbody2D>();
         ballRigidbody.isKinematic = true;
         ballRigidbody.simulated = true;
-        
+        if (GameManager.Instance.SCORE == 0)
+            EventManager.Instance.GameStarted();
         print("aim");
     }
 
@@ -64,17 +68,18 @@ public class BasketAim : MonoBehaviour
         }
         Vector2 ballPos = (launchPosition + mouseDelta);
         ball.transform.position = ballPos;
-        trajectory.ShowTrajectoryLine(launchPosition, -mouseDelta * velocityMult*2);
+        trajectory.ShowTrajectoryLine(launchPosition, -mouseDelta * (velocityMult*1.5f));
         if(Input.GetMouseButtonUp(0))
         {
             print("shot");
             _aimingMode = false;          
             ballRigidbody.isKinematic = false;
-            ballRigidbody.velocity = -mouseDelta * velocityMult*2;
+            ballRigidbody.velocity = -mouseDelta * velocityMult*1.5f;
             //print("velocity: " + ballRigidbody.velocity);
             trajectory.ClearTrajectory();
             ball = null;
             EventManager.Instance.BallShoted();
+            audioSource.Play();
         }
     }
 

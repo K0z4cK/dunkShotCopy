@@ -9,7 +9,8 @@ public class Fail : MonoBehaviour
         if(collision.tag =="ball")
         {
             //TEMP
-            Application.LoadLevel("Main");
+            //Destroy(collision.gameObject);
+            EventManager.Instance.GameOvered();
         }
     }
 }

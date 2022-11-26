@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BasketCatch : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource audioSource;
+
     public BasketAim aim;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,14 +20,16 @@ public class BasketCatch : MonoBehaviour
             /*if(CameraFollow.Instance.lowerPoint.position.y > this.transform.position.y+1.5f)
                 EventManager.Instance.BallCatchedBack(this.transform.parent.gameObject);*/
 
+            audioSource.Play();
+
             if (CameraFollow.Instance.lowerPoint != this.transform.parent ) 
                 EventManager.Instance.BallCatched();
 
             print("ball in basekt");
         }
     }
-    void Update()
+    void Awake()
     {
-        
+        audioSource = this.GetComponent<AudioSource>();
     }
 }

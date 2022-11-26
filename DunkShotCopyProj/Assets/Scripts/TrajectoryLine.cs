@@ -33,7 +33,7 @@ public class TrajectoryLine : MonoBehaviour
         {
             float timeOffset = timeStep * i;
             Vector2 progressBeforeGravity = startVelocity * timeOffset;
-            Vector2 gravityOffset = Vector2.up * -0.5f * Physics2D.gravity.y * timeOffset * timeOffset;
+            Vector2 gravityOffset = Vector2.up * -0.6f * Physics2D.gravity.y * timeOffset * timeOffset;
             Vector2 newPosition = startpoint + progressBeforeGravity - gravityOffset;
             lineRendererPoints[i] = newPosition;
             //print(newPosition);
