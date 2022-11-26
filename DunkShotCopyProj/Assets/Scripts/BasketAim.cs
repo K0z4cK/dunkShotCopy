@@ -36,7 +36,7 @@ public class BasketAim : MonoBehaviour
         // this.transform.up = Vector3.zero;
         bottomBound.enabled = false;
         catcher.enabled = false;
-        this.GetComponent<Collider2D>().enabled = true;
+        //this.GetComponent<Collider2D>().enabled = true;
         _aimingMode = true;
         ballRigidbody = ball.GetComponent<Rigidbody2D>();
         ballRigidbody.isKinematic = true;
@@ -69,17 +69,30 @@ public class BasketAim : MonoBehaviour
         Vector2 ballPos = (launchPosition + mouseDelta);
         ball.transform.position = ballPos;
         trajectory.ShowTrajectoryLine(launchPosition, -mouseDelta * (velocityMult*1.5f));
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0) )
         {
-            print("shot");
-            _aimingMode = false;          
-            ballRigidbody.isKinematic = false;
-            ballRigidbody.velocity = -mouseDelta * velocityMult*1.5f;
-            //print("velocity: " + ballRigidbody.velocity);
-            trajectory.ClearTrajectory();
-            ball = null;
-            EventManager.Instance.BallShoted();
-            audioSource.Play();
+            if ((-mouseDelta * velocityMult * 1.5f).x > 6f || (-mouseDelta * velocityMult * 1.5f).y > 6f)
+            {
+                print("shot");
+                _aimingMode = false;
+                ballRigidbody.isKinematic = false;
+                ballRigidbody.velocity = -mouseDelta * velocityMult * 1.5f;
+                print("velocity: " + ballRigidbody.velocity);
+                trajectory.ClearTrajectory();
+                ball = null;
+                EventManager.Instance.BallShoted();
+                audioSource.Play();
+            }
+            else {
+                trajectory.ClearTrajectory();
+                _aimingMode = !_aimingMode;
+                bottomBound.enabled = true;
+                catcher.enabled = true;
+                ballRigidbody.isKinematic = false;
+                ballRigidbody.simulated = false;
+                ball.transform.position = this.transform.position;
+                transform.parent.transform.up = Vector3.up;
+            }
         }
     }
 
