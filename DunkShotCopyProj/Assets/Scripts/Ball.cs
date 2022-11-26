@@ -5,6 +5,9 @@ using UnityEngine;
 public class Ball : SingletonComponent<Ball>
 {
     [SerializeField]
+    BallWorldUI ballWorldUI;
+
+    [SerializeField]
     AudioSource audioSource;
 
     public int BOUNCE_COUNT { get; private set; }
@@ -14,6 +17,8 @@ public class Ball : SingletonComponent<Ball>
 
     void Awake()
     {
+        ballWorldUI = this.GetComponentInChildren<BallWorldUI>();
+
         audioSource = this.GetComponent<AudioSource>();
 
         ballRigidbody = this.gameObject.GetComponent<Rigidbody2D>();
@@ -34,6 +39,10 @@ public class Ball : SingletonComponent<Ball>
         audioSource.Play();
         if(PlayerPrefs.GetInt("VibrationOn") == 1)
             Handheld.Vibrate();
+    }
+    public void ShowTexts()
+    {
+        //ballWorldUI.Show();
     }
     private void ClearCounters()
     {

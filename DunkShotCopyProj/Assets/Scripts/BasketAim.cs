@@ -5,6 +5,9 @@ using UnityEngine;
 public class BasketAim : MonoBehaviour
 {
     [SerializeField]
+    private BallWorldUI ballWorldUI;
+
+    [SerializeField]
     AudioSource audioSource;
 
     public Vector2 launchPosition;
@@ -23,6 +26,7 @@ public class BasketAim : MonoBehaviour
     private bool _aimingMode;
     void Awake()
     {
+        ballWorldUI = GetComponentInChildren<BallWorldUI>();
         audioSource = GetComponent<AudioSource>();
         trajectory = GetComponent<TrajectoryLine>();
         launchPosition = transform.position;

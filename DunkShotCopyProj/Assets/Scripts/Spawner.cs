@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
     GameObject basket;
     [SerializeField]
     GameObject star;
+    [SerializeField]
+    GameObject obstacle;
     MeshCollider spawpArea;
 
     private float _screenX, _screenY;
@@ -44,6 +46,16 @@ public class Spawner : MonoBehaviour
         {
             Instantiate(star, new Vector2(_screenX, _screenY+1), star.transform.rotation);
         }
+        if (GameManager.Instance.SCORE > 90)
+            if (Random.Range(0, 100) > 90)
+            {
+                float xSide;
+                if (_screenX < 0)
+                    xSide = -1f;
+                else xSide = 1f;
+
+                Instantiate(obstacle, new Vector2(_screenX + xSide, _screenY - 0.5f), obstacle.transform.rotation);
+            }
         EventManager.Instance.OnBasketCreate(newBasket);
     }
 

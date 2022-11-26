@@ -7,6 +7,8 @@ public class BasketCatch : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
 
+    [SerializeField]
+    BallWorldUI worldUI;
     public BasketAim aim;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,9 +24,11 @@ public class BasketCatch : MonoBehaviour
 
             audioSource.Play();
 
-            if (CameraFollow.Instance.lowerPoint != this.transform.parent ) 
+            if (CameraFollow.Instance.lowerPoint != this.transform.parent)
+            {
                 EventManager.Instance.BallCatched();
-
+                worldUI.Show();
+            }
             print("ball in basekt");
         }
     }

@@ -40,5 +40,5 @@ public class TrajectoryLine : MonoBehaviour
         }
         return lineRendererPoints;
     }
-    
+
 }
