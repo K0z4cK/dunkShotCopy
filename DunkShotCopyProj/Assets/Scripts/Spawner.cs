@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour
             }
             else if (randNum < 20)
             {
-                float ySide = 1.5f;
+                float ySide = 1.7f;
                 GameObject newObstacle = Instantiate(obstacle, new Vector2(_screenX, _screenY + ySide), obstacle.transform.rotation);
                 newObstacle.transform.parent = newBasket.transform;
                 newObstacle.transform.Rotate(new Vector3(0, 0, 90f), Space.Self);
