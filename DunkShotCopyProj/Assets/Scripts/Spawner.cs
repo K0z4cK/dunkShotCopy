@@ -47,15 +47,28 @@ public class Spawner : MonoBehaviour
             Instantiate(star, new Vector2(_screenX, _screenY+1), star.transform.rotation);
         }
         if (GameManager.Instance.SCORE > 90)
-            if (Random.Range(0, 100) > 90)
+        {
+            int randNum = Random.Range(0, 100);
+            if (randNum > 90)
             {
                 float xSide;
-                if (_screenX < 0)
+                if (_screenX > 0)
                     xSide = -1f;
                 else xSide = 1f;
 
-                Instantiate(obstacle, new Vector2(_screenX + xSide, _screenY - 0.5f), obstacle.transform.rotation);
+
+
+                Instantiate(obstacle, new Vector2(_screenX + xSide, _screenY - Random.Range(0.3f, 0.5f)), obstacle.transform.rotation).transform.parent = newBasket.transform;
             }
+            else if (randNum < 20)
+            {
+                float ySide = 1.5f;
+                GameObject newObstacle = Instantiate(obstacle, new Vector2(_screenX, _screenY + ySide), obstacle.transform.rotation);
+                newObstacle.transform.parent = newBasket.transform;
+                newObstacle.transform.Rotate(new Vector3(0, 0, 90f), Space.Self);
+
+            }
+        }
         EventManager.Instance.OnBasketCreate(newBasket);
     }
 

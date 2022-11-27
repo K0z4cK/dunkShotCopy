@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Ball
+    - BallWorldUI
     - BasketAim
     - BasketCatch
     - CameraFollow
@@ -13,6 +14,7 @@ ScriptsOnlyBuild:
     - GamePanel
     - LosePanel
     - MenuPanel
+    - Obstacle
     - PausePanel
     - SettingsPanel
     - Spawner
@@ -45,6 +47,12 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -90,46 +98,52 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 68
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1482}
     - Class: 114
-      Script: {instanceID: 1590}
+      Script: {instanceID: 1484}
     - Class: 114
-      Script: {instanceID: 1732}
+      Script: {instanceID: 1592}
     - Class: 114
-      Script: {instanceID: 1762}
+      Script: {instanceID: 1734}
     - Class: 114
-      Script: {instanceID: 1766}
+      Script: {instanceID: 1764}
     - Class: 114
-      Script: {instanceID: 1852}
+      Script: {instanceID: 1768}
     - Class: 114
-      Script: {instanceID: 2230}
+      Script: {instanceID: 1854}
     - Class: 114
-      Script: {instanceID: 2302}
+      Script: {instanceID: 2232}
     - Class: 114
-      Script: {instanceID: 2356}
+      Script: {instanceID: 2304}
     - Class: 114
-      Script: {instanceID: 2436}
+      Script: {instanceID: 2358}
     - Class: 114
-      Script: {instanceID: 2498}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2662}
+      Script: {instanceID: 2500}
     - Class: 114
       Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2828}
+      Script: {instanceID: 2666}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2830}
     - Class: 114
-      Script: {instanceID: 3044}
+      Script: {instanceID: 2876}
     - Class: 114
       Script: {instanceID: 3288}
     - Class: 114
@@ -143,29 +157,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3982}
     - Class: 114
-      Script: {instanceID: 4422}
+      Script: {instanceID: 4116}
     - Class: 114
-      Script: {instanceID: 4564}
+      Script: {instanceID: 4424}
     - Class: 114
-      Script: {instanceID: 4598}
+      Script: {instanceID: 4566}
     - Class: 114
-      Script: {instanceID: 4752}
+      Script: {instanceID: 4600}
     - Class: 114
-      Script: {instanceID: 4832}
+      Script: {instanceID: 4754}
     - Class: 114
-      Script: {instanceID: 5028}
+      Script: {instanceID: 4834}
     - Class: 114
-      Script: {instanceID: 5138}
+      Script: {instanceID: 5030}
     - Class: 114
-      Script: {instanceID: 5274}
+      Script: {instanceID: 5140}
     - Class: 114
-      Script: {instanceID: 5300}
+      Script: {instanceID: 5276}
     - Class: 114
-      Script: {instanceID: 5436}
+      Script: {instanceID: 5302}
     - Class: 114
-      Script: {instanceID: 5524}
+      Script: {instanceID: 5438}
     - Class: 114
-      Script: {instanceID: 5742}
+      Script: {instanceID: 5526}
+    - Class: 114
+      Script: {instanceID: 5744}
+    - Class: 114
+      Script: {instanceID: 28348}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -193,6 +211,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -279,13 +303,13 @@ ScriptsOnlyBuild:
     className: SkewTextExample
   - hash:
       serializedVersion: 2
-      Hash: 1aca2306969c9672c37bf434a39d8778
+      Hash: 384cb622178a3ce44c695eaf513dbd74
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Spawner
   - hash:
       serializedVersion: 2
-      Hash: 231d0c8f1e2749f1a48b7d1dff5021bf
+      Hash: bf8d5ab7afa79e4c77004873db701aa6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BasketCatch
@@ -469,12 +493,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestRunner.Utils
     className: TestRunCallbackListener
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
@@ -703,6 +721,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro
     className: TMP_TextEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 1877e6aebb9e4866b81de22a56a9bee6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BallWorldUI
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -969,7 +993,7 @@ ScriptsOnlyBuild:
     className: BufferManager
   - hash:
       serializedVersion: 2
-      Hash: cbeba0be93684d3bcd4b72542d830f58
+      Hash: 5c47d505d6a1876df05aa371e5796582
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ball
@@ -987,7 +1011,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 7fefe8fa6fa0759feca862e004d8b09d
+      Hash: 654d539218abf5e35b3f11a277779839
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BasketAim
@@ -1033,6 +1057,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Obstacle
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main.unity
