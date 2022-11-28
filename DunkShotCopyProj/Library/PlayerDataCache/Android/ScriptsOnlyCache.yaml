@@ -171,19 +171,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5030}
     - Class: 114
-      Script: {instanceID: 5140}
+      Script: {instanceID: 5104}
     - Class: 114
-      Script: {instanceID: 5276}
+      Script: {instanceID: 5142}
     - Class: 114
-      Script: {instanceID: 5302}
+      Script: {instanceID: 5278}
     - Class: 114
-      Script: {instanceID: 5438}
+      Script: {instanceID: 5304}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5440}
     - Class: 114
-      Script: {instanceID: 5744}
+      Script: {instanceID: 5528}
     - Class: 114
-      Script: {instanceID: 28348}
+      Script: {instanceID: 5746}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -921,6 +921,12 @@ ScriptsOnlyBuild:
     className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Obstacle
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1057,12 +1063,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Obstacle
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main.unity
